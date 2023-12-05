@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>¡Bienvenido al juego de preguntas!</title>
+    <link rel="stylesheet" href="misEstilos.css">
+
+</head>
+
+
+
+<body onload="iniciarCuentaRegresiva()"> <!--HTML-->
+
+<h1 ><u>¡BIENVENID@ AL JUEGO DE PREGUNTAS!</u></h1> 
+<h1 id="contador">30</h1>
+
+<audio id="miAudio"> <!--Audio-->
+    <source src="Audios\alarma.mp3" type="audio/mpeg"> <!--Esto para decir de donde sacamos el audio y que es-->
+    Sonido no se puede reproducir <!--Esto es por si no se puede escuchar el audio-->
+</audio>
+
+<br> <br>
+
+
+<h3><u>1_¿Como se llama el presidente actual de Argentina?</u></h3><!--Preguntas-->
+<p><input type="text" id="presidentArg"></p>
+<p><button onclick="presidenteArg()">INGRESAR</button></p>
+<p id="saliDente"></p>
+
+<br>
+
+<h3><u>2_¿Quién creo la bandera?</u></h3><!--Preguntas-->
+<p><input type="text" id="banderaArg"></p>
+<p><button onclick="banderArgentina()">INGRESAR</button></p>
+<p id="saliBander"> </p>
+
+<br>
+
+<h3><u>3_¿Que idioma se habla en Costa Marfil?</u></h3><!--Preguntas-->
+<p><input type="text" id="lenguMar"></p>
+<p><button onclick="idioMarfil()">INGRESAR</button></p>
+<p id="salIdioma"> </p>
+
+<br>
+
+<h3><u>4_¿Como se llama el presidente actual del Salvador?</u></h3><!--Preguntas-->
+<p><input type="text" id="presidentSalv"></p>
+<p><button onclick="preSalvador()">INGRESAR</button></p>
+<p id="saliDenteSal"> </p>
+
+<br>
+
+<h3><u>5_¿Cual fue el presidente que ganó el premio Nobel de la paz?</u></h3><!--Preguntas-->
+<p><input type="text" id="nobelPaz"></p>
+<p><button onclick="nobelAz()">INGRESAR</button></p>
+<p id="saliPaz">  </p>
+
+
+
+<script> //JAVASCRIPT
+
+//Tiempo de respuestas.
+
+
+
+function iniciarCuentaRegresiva(){
+    setInterval(decrementarContador, 1000);
+    cuentaRegresiva();
+}
+
+function cuentaRegresiva() {
+    var nombrePresident = document.getElementById("presidentArg");
+    var creaBander = document.getElementById("banderaArg");
+    var idiomaRfil = document.getElementById("lenguMar");
+    var salvaPres = document.getElementById("presidentSalv");
+    var nobel = document.getElementById("nobelPaz");
+
+    setTimeout(function () {
+        if (
+            nombrePresident.value === "Javier Milei" &&
+            creaBander.value === "Manuel Belgrano" &&
+            idiomaRfil.value === "Frances" &&
+            salvaPres.value === "Nayib Bukele" &&
+            nobel.value === "Barak Obama"
+        ) {
+            alert("!LO LOGRASTE¡");
+        } else {
+            alert("!GAME OVER! Inténtalo de nuevo");
+        }
+
+        location.reload();
+    }, 30000); // Después de 30 segundos
+
+    setTimeout(function(){
+        var audio = document.getElementById("miAudio");
+        audio.play();
+    }, 29500);
+}
+
+function decrementarContador() {
+    var h1Element = document.getElementById("contador");
+    var valorActual = parseInt(h1Element.textContent);
+
+    if (valorActual > 0) {
+        h1Element.textContent = (valorActual - 1).toString();
+    }
+}
+
+
+
+//Nombre del Usuario
+
+function mostrarNombre(){ //Usuario-Esto  aparece en el botón.
+       let nombre= document.getElementById("nombreUser"); //nombreUser: Donde se va a  poner el nombre.
+       let saludarNombre=document.getElementById("salida"); //salida.Luego para donde se va a mostrar.
+       let mensaje=saludarNombre.textContent= "¡BIENVENID@ AL JUEGO DE PREGUNTAS-"+ nombre.value + "!"; //sale en salida: Esto se va a mostrar.
+}
+
+//1_¿Como se llama el presidente actual de Argentina?
+
+function presidenteArg(){
+
+    let nombrePresident= document.getElementById("presidentArg"); //nombreUser: Donde se va a  poner el nombre.
+    let presidentArgentino=document.getElementById("saliDente"); //salida.Luego para donde se va a mostrar.
+   
+
+    if(nombrePresident.value==="Javier Milei"){
+
+        presidentArgentino.textContent = "Correcto, es Javier Milei!";
+        presidentArgentino.style.color = "green";
+        return presidentArgentino.textContent;
+        
+    } else{
+        presidentArgentino.textContent = "Incorrecto, revisa tu respuesta.";
+        presidentArgentino.style.color = "red";
+        return presidentArgentino.textContent;
+
+
+        
+    };
+    
+   
+
+}
+
+//2_¿Quién creo la bandera?
+
+function banderArgentina(){
+
+
+    let creaBander= document.getElementById("banderaArg"); //nombreUser: Donde se va a  poner el nombre.
+    let creadorBandera=document.getElementById("saliBander"); //salida.Luego para donde se va a mostrar.
+   
+
+    if(creaBander.value==="Manuel Belgrano"){
+
+        creadorBandera.textContent = "Correcto, es Manuel Belgrano";
+        creadorBandera.style.color = "green";
+        return creadorBandera.textContent;
+        
+    } else{
+        creadorBandera.textContent = "Incorrecto, revisa tu respuesta.";
+        creadorBandera.style.color = "red";
+        return creadorBandera.textContent;
+
+
+        
+    };
+    
+   
+
+
+}
+
+//3_¿Que idioma se habla en Costa Marfil?
+
+function idioMarfil(){
+
+    let idiomaRfil= document.getElementById("lenguMar"); //nombreUser: Donde se va a  poner el nombre.
+    let idiomarfil1=document.getElementById("salIdioma"); //salida.Luego para donde se va a mostrar.
+   
+
+    if(idiomaRfil.value==="Frances"){
+
+        idiomarfil1.textContent = "Correcto, es Frances!";
+        idiomarfil1.style.color = "green";
+        return idiomarfil1.textContent;
+        
+    } else{
+        idiomarfil1.textContent = "Incorrecto, revisa tu respuesta.";
+        idiomarfil1.style.color = "red";
+        return idiomarfil1.textContent;
+
+
+        
+    };
+
+}
+
+//4_¿Como se llama el presidente actual del Salvador?
+
+function preSalvador(){
+
+    let salvaPres= document.getElementById("presidentSalv"); //nombreUser: Donde se va a  poner el nombre.
+    let presidentSalva=document.getElementById("saliDenteSal"); //salida.Luego para donde se va a mostrar.
+   
+
+    if(salvaPres.value==="Nayib Bukele"){
+
+        presidentSalva.textContent = "Correcto, es  Nayib Bukele!";
+        presidentSalva.style.color = "green";
+        return presidentSalva.textContent;
+        
+    } else{
+        presidentSalva.textContent = "Incorrecto, revisa tu respuesta.";
+        presidentSalva.style.color = "red";
+        return presidentSalva.textContent;
+
+
+        
+    };
+
+
+}
+
+//5_¿Cual fue el presidente que ganó el premio Nobel de la paz?
+function nobelAz(){
+
+    let nobel= document.getElementById("nobelPaz"); //nombreUser: Donde se va a  poner el nombre.
+    let nobelPaz1=document.getElementById("saliPaz"); //salida.Luego para donde se va a mostrar.
+   
+
+    if(nobel.value==="Barak Obama"){
+
+        nobelPaz1.textContent = "Correcto, es Barak Obama!";
+        nobelPaz1.style.color = "green";
+        return nobelPaz1.textContent;
+        
+    } else{
+        nobelPaz1.textContent = "Incorrecto, revisa tu respuesta.";
+        nobelPaz1.style.color = "red";
+        return nobelPaz1.textContent;
+
+
+        
+    };
+
+
+
+}
+
+
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
